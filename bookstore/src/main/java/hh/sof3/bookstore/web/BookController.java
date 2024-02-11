@@ -34,20 +34,23 @@ public class BookController {
         //^alustetaan tyhjä oli, jolle asetetaan arvot
 		return "bookform";
 	}
+    @GetMapping("/editbook/{id}")
+    public String editBook(@PathVariable("id") Long bookId, Model model) {
+        model.addAttribute("book", bookRepository.findById(bookId));
+        return "bookform";
+    }
 
     @PostMapping("/savebook")
 	public String saveBook(@ModelAttribute Book book) {
-		// talletetaan yhden kirjan tiedot tietokantaan
-		bookRepository.save(book);
-		return "redirect:/";
+        bookRepository.save(book);
+        return "redirect:/";
 	}
+
 
     @GetMapping("/deletebook/{id}")
     public String deleteBook(@PathVariable("id") Long bookId) {
         bookRepository.deleteById(bookId);
         return "redirect:/";
     }
-    
-    //TODO EDIT:
 }
 

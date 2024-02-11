@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Bookstore</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Bookstore</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!--Linkki Bootstrap-min tyyliin-->
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
-<body>
-	<h1>Books</h1>
-	<table>
+<body style="background-color:rgb(208, 196, 88)">
+	<h1 style="margin-left:10%;">Books📚</h1>
+	<table class="table table-striped">
 		<tr>
 			<th>Title</th>
 			<th>Author</th>
@@ -23,9 +25,10 @@
 			<td th:text="${book.isbn}"></td>
 			<td th:text="${book.price}"></td>
 
-			<td><a th:href="@{/deletebook/{id}(id=${book.id})}">Delete</a></td>
+			<td><a th:href="@{/editbook/{id}(id=${book.id})}"  class="btn btn-success">Edit</a></td>
+			<td><a th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
 		</tr>
 	</table>
-	<a href="/newbook">New Book</a>
+	<a href="/newbook" style="margin-left:10%;" class="btn btn-success">New Book</a>
 </body>
 </html>
