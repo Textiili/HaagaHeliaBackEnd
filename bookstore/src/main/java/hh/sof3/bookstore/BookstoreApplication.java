@@ -24,7 +24,7 @@ public class BookstoreApplication {
 		return (args) -> {
 			log.info("save a couple of books");
 			Book book1 = new Book("Homo Deus", "Yuval Noah Harari", 2015, "978-952-279-625-7", 25.50f);
-			Book book2 = new Book("Homo Deus", "Yuval Noah Harari", 2015, "978-952-279-625-7", 25.50f);
+			Book book2 = new Book("Hyvän historia", "Rutger Bregman", 2019, "978-952-279-625-7", 20.00f);
 			
 			bookRepository.save(book1);
 			bookRepository.save(book2);	
