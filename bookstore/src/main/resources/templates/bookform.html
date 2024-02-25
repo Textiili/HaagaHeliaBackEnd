@@ -15,6 +15,11 @@
     <input type="text" th:field="*{publicationYear}" placeholder="Year"/>
     <input type="text" th:field="*{isbn}" placeholder="ISBN"/>
     <input type="text" th:field="*{price}" placeholder="Price"/>
+    
+    <select id="categorylist" th:field="*{category}" placeholder="category">
+    <option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+    </select>
+
 	<input type="submit" value="Submit" class="btn btn-success"/> <input type="reset" value="Reset" class="btn btn-danger"/>
 	</form>
 </body>

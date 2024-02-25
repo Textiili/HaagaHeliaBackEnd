@@ -1,6 +1,5 @@
 package hh.sof3.bookstore.domain;
 
-//import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,38 +19,21 @@ public class Book {
     private String isbn;
     private Float price;
 
-    @ManyToOne //Vaiha ManyToMany
+    @ManyToOne //Vaiha ManyToMany?
     @JoinColumn(name = "categoryid")
     private Category category;
 
     //Konstruktorit:
-    public Book() {//Tyhjä olio
-        super();
-        this.id = null;
-        this.title = null;
-        this.author = null;
-        this.publicationYear = null;
-        this.isbn = null;
-        this.price = null;
-    }
-    //Ilman id:tä:
-    public Book(String title, String author, int publicationYear, String isbn, float price) {
+    public Book() {}
+
+    public Book(String title, String author, int publicationYear, String isbn, float price, Category category) {
         super();
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
         this.isbn = isbn;
         this.price = price;
-    }
-    //Id:llä:
-    public Book(Long id, String title, String author, int publicationYear, String isbn, float price) {
-        super();
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.publicationYear = publicationYear;
-        this.isbn = isbn;
-        this.price = price;
+        this.category = category;
     }
     
     //Getterit ja setterit:

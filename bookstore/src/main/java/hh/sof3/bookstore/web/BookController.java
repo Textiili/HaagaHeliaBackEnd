@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import hh.sof3.bookstore.domain.Book;
 import hh.sof3.bookstore.domain.BookRepository;
+import hh.sof3.bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
 
     @Autowired
     BookRepository bookRepository;
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     @GetMapping("")
     public String getBooks(Model model) {
@@ -31,6 +35,7 @@ public class BookController {
     @GetMapping("/newbook")
 	public String getNewBookForm(Model model) {
 		model.addAttribute("book", new Book());
+        model.addAttribute("categories", categoryRepository.findAll());
         //^alustetaan tyhjä olio, jolle asetetaan arvot
 		return "bookform";
 	}
@@ -38,6 +43,7 @@ public class BookController {
     @GetMapping("/editbook/{id}")
     public String editBook(@PathVariable("id") Long bookId, Model model) {
         model.addAttribute("book", bookRepository.findById(bookId));
+        model.addAttribute("categories", categoryRepository.findAll());
         return "bookform";
     }
 

@@ -27,23 +27,22 @@ public class BookstoreApplication {
 			log.info("save a couple of categories");
 			Category category1 = new Category("nonfiction");
 			Category category2 = new Category("horror");
+			Category category3 = new Category("scifi");
+			Category category4 = new Category("romance");
 			categoryRepository.save(category1);
 			categoryRepository.save(category2);
+			categoryRepository.save(category3);
+			categoryRepository.save(category4);
 
 			log.info("save a couple of books");
-			Book book1 = new Book("Homo Deus", "Yuval Noah Harari", 2015, "978-952-279-625-7", 25.50f);
-			Book book2 = new Book("Hyvän historia", "Rutger Bregman", 2019, "978-952-279-625-7", 20.00f);
+			Book book1 = new Book("Homo Deus", "Yuval Noah Harari", 2015, "978-952-279-625-7", 25.50f, category1);
+			Book book2 = new Book("Hyvän historia", "Rutger Bregman", 2019, "978-952-279-625-7", 20.00f, category1);
 			bookRepository.save(book1);
 			bookRepository.save(book2);	
 			
 			log.info("fetch all books");
 			for (Book book : bookRepository.findAll()) {
 				log.info(book.toString());
-			}
-
-			log.info("fetch all categories");
-			for (Category category : categoryRepository.findAll()) {
-				log.info(category.toString());
 			}
 		};
 	}
