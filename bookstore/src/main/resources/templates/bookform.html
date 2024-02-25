@@ -33,7 +33,8 @@
                     <option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
                 </select>
             </div>
-            <input type="submit" value="Submit" class="btn btn-success" style="margin-top: 1%;"/> <input type="reset" value="Reset" class="btn btn-danger" style="margin-top: 1%;"/>
+            <input type="submit" value="Submit" class="btn btn-success" style="margin-top: 1%; margin-left: 1.4%;"/> <input type="reset" value="Reset" class="btn btn-danger" style="margin-top: 1%; margin-left: 0.5%;"/>
+            <a href="/" class="btn btn-success" style="margin-top: 1%; margin-left: 0.5%;">Back</a>
         </form>
     </div>
 
@@ -56,7 +57,7 @@
         //Käytetäänkö väärää tietotyyppiä?
         var priceRegex = /^\d+(\.\d{1,2})?$/;
         if (!priceRegex.test(priceInput.value)) {
-            alert('Price must be a number and can have only two decimals that are separated with "."!');
+            alert('- Price must be a number\n- Can have only two decimals\n- Decimals are separated with "."');
             return false;
         }
         var yearRegex = /^\d+$/;
