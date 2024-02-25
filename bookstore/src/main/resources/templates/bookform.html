@@ -9,7 +9,7 @@
 
 <body style="background-color:rgb(208, 196, 88)">
     <div class="container">
-        <h1 style="margin-left:10%;">Book📚</h1>
+        <h1 id="dynamicHeading" style="margin-left:10%;"></h1>
         <form action="#" th:action="@{/savebook}" th:object="${book}" method="post" class="row g-3">
             <input type="hidden" th:field="*{id}" class="form-control" />
             <div class="col-md-4">
@@ -29,11 +29,30 @@
             </div>
             <div class="col-md-4">
                 <select id="categorylist" th:field="*{category}" class="form-control">
+                    <option value="" disabled selected hidden>Category</option>
                     <option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
                 </select>
             </div>
             <input type="submit" value="Submit" class="btn btn-success" style="margin-top: 1%;"/> <input type="reset" value="Reset" class="btn btn-danger" style="margin-top: 1%;"/>
         </form>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var currentUrl = window.location.href;
+            if (currentUrl.includes('/newbook')) 
+            {
+                var header = document.getElementById('dynamicHeading');
+                var categoryList = document.getElementById('categorylist');
+                header.innerText = 'New Book📚';
+                categoryList.value = '';
+            } 
+            else if (currentUrl.includes('/editbook')) 
+            {
+                var header = document.getElementById('dynamicHeading');
+                header.innerText = 'Edit Book📚';
+            }
+        });
+      </script>
 </body>
 </html>
