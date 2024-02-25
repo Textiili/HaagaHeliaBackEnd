@@ -10,7 +10,7 @@
 <body style="background-color:rgb(208, 196, 88)">
     <div class="container">
         <h1 id="dynamicHeading" style="margin-left:10%;"></h1>
-        <form action="#" th:action="@{/savebook}" th:object="${book}" method="post" class="row g-3">
+        <form action="#" th:action="@{/savebook}" th:object="${book}" method="post" class="row g-3" onsubmit="return validateForm()">
             <input type="hidden" th:field="*{id}" class="form-control" />
             <div class="col-md-4">
                 <input type="text" th:field="*{title}" placeholder="Title" class="form-control" />
@@ -38,6 +38,38 @@
     </div>
 
     <script>
+        //Kyselyn validointi
+        function validateForm() {
+        var titleInput = document.getElementById('title');
+        var authorInput = document.getElementById('author');
+        var publicationYearInput = document.getElementById('publicationYear');
+        var isbnInput = document.getElementById('isbn');
+        var priceInput = document.getElementById('price');
+        var categoryList = document.getElementById('categorylist');
+        
+        //Onko kysely tyhjä?
+        if (titleInput.value === '' || authorInput.value === '' || publicationYearInput.value === '' || isbnInput.value === '' || priceInput.value === '' || categoryList.value === '') {
+            alert('Please fill in all required fields.');
+            return false;
+        }
+
+        //Käytetäänkö väärää tietotyyppiä?
+        var priceRegex = /^\d+(\.\d{1,2})?$/;
+        if (!priceRegex.test(priceInput.value)) {
+            alert('Price must be a number and can have only two decimals that are separated with "."!');
+            return false;
+        }
+        var yearRegex = /^\d+$/;
+        if (!yearRegex.test(publicationYearInput.value)) {
+            alert('Year must only contain numbers!');
+            return false;
+        }
+
+        //Onnistunut kysely.
+        return true;
+        }
+
+        //Dynaaminen kysely
         document.addEventListener('DOMContentLoaded', function () {
             var currentUrl = window.location.href;
             if (currentUrl.includes('/newbook')) 
