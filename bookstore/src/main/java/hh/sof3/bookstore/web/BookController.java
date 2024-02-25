@@ -31,9 +31,10 @@ public class BookController {
     @GetMapping("/newbook")
 	public String getNewBookForm(Model model) {
 		model.addAttribute("book", new Book());
-        //^alustetaan tyhjä oli, jolle asetetaan arvot
+        //^alustetaan tyhjä olio, jolle asetetaan arvot
 		return "bookform";
 	}
+    
     @GetMapping("/editbook/{id}")
     public String editBook(@PathVariable("id") Long bookId, Model model) {
         model.addAttribute("book", bookRepository.findById(bookId));

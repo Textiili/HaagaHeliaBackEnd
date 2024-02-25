@@ -26,12 +26,12 @@ public class Category {
         this.name = name;
     }
 
-    public Long getId() {
+    public Long getCategoryid() {
         return categoryid;
     }
 
-    public void setId(Long id) {
-        this.categoryid = id;
+    public void setCategoryid(Long categoryid) {
+        this.categoryid = categoryid;
     }
 
     public String getName() {

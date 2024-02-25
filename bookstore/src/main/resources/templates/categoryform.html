@@ -7,14 +7,10 @@
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body style="background-color:rgb(208, 196, 88)">
-	<h1 style="margin-left:10%; ">Book📚</h1>
-	<form action="#" th:action="@{/savebook}"  th:object= ${book} method="post">
-    <input type="hidden" th:field="*{id}" class="form-control"/>
-    <input type="text" th:field="*{title}" placeholder="Title"/>
-    <input type="text" th:field="*{author}" placeholder="Author"/>
-    <input type="text" th:field="*{publicationYear}" placeholder="Year"/>
-    <input type="text" th:field="*{isbn}" placeholder="ISBN"/>
-    <input type="text" th:field="*{price}" placeholder="Price"/>
+	<h1 style="margin-left:10%; ">Category</h1>
+	<form action="#" th:action="@{/savecategory}"  th:object= ${category} method="post">
+    <input type="hidden" th:field="*{categoryid}" class="form-control"/>
+    <input type="text" th:field="*{name}" placeholder="Category type"/>
 	<input type="submit" value="Submit" class="btn btn-success"/> <input type="reset" value="Reset" class="btn btn-danger"/>
 	</form>
 </body>
