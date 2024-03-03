@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-// import hh.sof3.bookstore.domain.Book; TODO riippuvaisuuksia?
-// import hh.sof3.bookstore.domain.BookRepository;
 import hh.sof3.bookstore.domain.Category;
 import hh.sof3.bookstore.domain.CategoryRepository;
 

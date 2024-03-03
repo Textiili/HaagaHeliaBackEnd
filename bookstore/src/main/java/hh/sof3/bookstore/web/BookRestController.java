@@ -17,7 +17,7 @@ import hh.sof3.bookstore.domain.Book;
 
 @CrossOrigin
 @Controller
-public class BookRestController {
+public class BookRestController { //Tarpeellinen?
     @Autowired
 	private BookRepository bookRepository; 
   
@@ -29,7 +29,7 @@ public class BookRestController {
     @GetMapping(value="/books/{id}")
     public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {	
     	return bookRepository.findById(bookId);
-    }      
+    }  
     
     @PostMapping(value="/books")
     public @ResponseBody Book saveBookRest(@RequestBody Book book) {	

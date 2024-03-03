@@ -21,7 +21,7 @@ public class Book {
     private String isbn;
     private Float price;
 
-    @ManyToOne //Vaiha ManyToMany?
+    @ManyToOne 
     @JsonIgnoreProperties("books")
     @JoinColumn(name = "categoryid")
     private Category category;
