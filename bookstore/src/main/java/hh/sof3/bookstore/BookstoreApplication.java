@@ -36,7 +36,7 @@ public class BookstoreApplication {
 
 			log.info("save a couple of books");
 			Book book1 = new Book("Homo Deus", "Yuval Noah Harari", 2015, "978-952-279-625-7", 25.50f, category1);
-			Book book2 = new Book("Hyvän historia", "Rutger Bregman", 2019, "978-952-279-625-7", 20.00f, category1);
+			Book book2 = new Book("Hyvän historia", "Rutger Bregman", 2019, "978-031-641-852-2", 20.00f, category1);
 			bookRepository.save(book1);
 			bookRepository.save(book2);	
 			
