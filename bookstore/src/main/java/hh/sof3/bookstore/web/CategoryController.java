@@ -15,7 +15,7 @@ import hh.sof3.bookstore.domain.Category;
 import hh.sof3.bookstore.domain.CategoryRepository;
 
 @Controller
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class CategoryController {
     @Autowired
     CategoryRepository categoryRepository;

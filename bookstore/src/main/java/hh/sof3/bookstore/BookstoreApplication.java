@@ -11,6 +11,8 @@ import hh.sof3.bookstore.domain.Book;
 import hh.sof3.bookstore.domain.BookRepository;
 import hh.sof3.bookstore.domain.Category;
 import hh.sof3.bookstore.domain.CategoryRepository;
+import hh.sof3.bookstore.domain.User;
+import hh.sof3.bookstore.domain.UserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -22,7 +24,7 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository bookRepository, CategoryRepository categoryRepository) { 
+	public CommandLineRunner bookDemo(BookRepository bookRepository, CategoryRepository categoryRepository, UserRepository userRepository) { 
 		return (args) -> {
 			log.info("save a couple of categories");
 			Category category1 = new Category("nonfiction");
@@ -39,7 +41,12 @@ public class BookstoreApplication {
 			Book book2 = new Book("Hyvän historia", "Rutger Bregman", 2019, "978-031-641-852-2", 20.00f, category1);
 			bookRepository.save(book1);
 			bookRepository.save(book2);	
-			
+
+			User user1 = new User("user", "$2a$10$tN1dezKHj4ttNZjmzrC.f.h774ee12b4pDUmxbYStlEiypsma5wQy", "USER");
+			User user2 = new User("admin", "$2a$10$.pn3kvLgvho5P6AJRSDrbOTMz9FB4.2a.Feh/B/L2gcUnOL6Iu4p2", "ADMIN");
+			userRepository.save(user1);
+			userRepository.save(user2);
+
 			log.info("fetch all books");
 			for (Book book : bookRepository.findAll()) {
 				log.info(book.toString());

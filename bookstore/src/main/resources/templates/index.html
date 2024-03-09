@@ -35,11 +35,11 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 			<td th:text="${book.category.name}"></td>
 
 			<td><a th:href="@{/editbook/{id}(id=${book.id})}"  class="btn btn-success">Edit</a></td>
-				<td sec:authorize="hasRole('ADMIN')">
+				<td sec:authorize="hasAuthority('ADMIN')">
 				<a th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
 		</tr>
 	</table>
 	<a href="/newbook" style="margin-left:10%;" class="btn btn-success">New Book</a>
-	<a href="/categorylist" class="btn btn-success" sec:authorize="hasRole('ADMIN')">Categories</a>
+	<a href="/categorylist" class="btn btn-success" sec:authorize="hasAuthority('ADMIN')">Categories</a>
 </body>
 </html>
