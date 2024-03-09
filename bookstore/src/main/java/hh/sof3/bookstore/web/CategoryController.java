@@ -3,6 +3,7 @@ package hh.sof3.bookstore.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,6 +15,7 @@ import hh.sof3.bookstore.domain.Category;
 import hh.sof3.bookstore.domain.CategoryRepository;
 
 @Controller
+@PreAuthorize("hasRole('ADMIN')")
 public class CategoryController {
     @Autowired
     CategoryRepository categoryRepository;

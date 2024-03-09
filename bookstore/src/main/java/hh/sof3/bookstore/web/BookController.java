@@ -3,6 +3,7 @@ package hh.sof3.bookstore.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -55,6 +56,7 @@ public class BookController {
 
 
     @GetMapping("/deletebook/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteBook(@PathVariable("id") Long bookId) {
         bookRepository.deleteById(bookId);
         return "redirect:/";
