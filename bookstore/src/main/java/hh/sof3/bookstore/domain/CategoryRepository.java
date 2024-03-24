@@ -5,4 +5,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
 public interface CategoryRepository extends CrudRepository<Category, Long> {
+    Category findByName(String name);
 }

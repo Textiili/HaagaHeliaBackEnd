@@ -1,8 +1,6 @@
 package hh.sof3.bookstore;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Optional;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -17,9 +15,10 @@ public class CategoryRepositoryTest {
     private CategoryRepository categoryRepository;
 
     @Test
-    public void findCategoryShouldReturnCategory() {
-        Optional<Category> shouldBeNonfiction = categoryRepository.findById(1L);
-        assertThat(shouldBeNonfiction.get().getName()).isEqualTo("nonfiction");
+    public void findCategoryByNameTest() {
+        
+        Category category = categoryRepository.findByName("nonfiction");
+        assertThat(category.getName()).isEqualTo("nonfiction");
     }
     
     @Test 
