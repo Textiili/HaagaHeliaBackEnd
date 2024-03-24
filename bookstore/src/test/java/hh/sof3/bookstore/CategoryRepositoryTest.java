@@ -31,6 +31,9 @@ public class CategoryRepositoryTest {
 
     @Test
     public void deleteCategoryTest() {
+        //Lets test first that category with id 5L exists
+        assertThat(categoryRepository.findById(5L)).isNotNull();
+
         categoryRepository.deleteById(5L);
         assertThat(categoryRepository.findById(5L)).isEmpty();
     }

@@ -39,6 +39,9 @@ public class BookRepositoryTest {
 
     @Test
     public void deleteBookTest() {
+        //Lets test first that book with id 3L exists
+        assertThat(bookRepository.findById(3L)).isNotNull();
+
         bookRepository.deleteById(3L);
         assertThat(bookRepository.findById(3L)).isEmpty();
     }
